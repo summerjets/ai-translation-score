@@ -1,4 +1,4 @@
-# ai-translation-score
+# AI Translation Score
 
 ## About AI Translation Score
 
@@ -70,7 +70,8 @@ Invalid input payloads are handled gracefully, with payload messages such as "pa
 git clone https://this-repo
 ```
 
-### 2. Installing Docker
+
+### 2. Installing Docker
 
 The application requires Docker and Docker Compose. The instructions below are tested on an Amazon Linux t2.medium EC2 instance. If you are running on significantly different hardware, it is advisable to follow the installation instructions on the Docker website.
 
