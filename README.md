@@ -98,6 +98,14 @@ chmod u+x run_docker.sh
 sudo ./run_docker.sh
 ```
 
+Upon successful completion of the script, the easiest way to check the application is available is to GET request the /health endpoint and confirm a healthy response.
+
+```
+$ curl localhost:8000/health
+{"status":"healthy"}
+```
+
+
 ## Debugging
 
 ### Security Settings for Inbound Traffic on AWS EC2
