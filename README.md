@@ -40,8 +40,8 @@ Expected Success Output
 {
   "status": "success",
   "payload": {
-               "comparison_score": score,
-               "accept_solution": accept
+               "comparison_score": float,
+               "accept_solution": boolean
              }
 }
 ```
