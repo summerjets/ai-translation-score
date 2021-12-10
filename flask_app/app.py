@@ -12,6 +12,7 @@ torch.set_num_threads(1)
 MATCH_THRESHOLD = 0.8
 ## END CONFIG
 
+API_KEY = os.environ.get("TRANSLATION_API_KEY", None)
 
 from sentence_transformers import SentenceTransformer
 model = SentenceTransformer('paraphrase-albert-small-v2', device="cpu")
@@ -28,12 +29,28 @@ def health():
     return make_response(jsonify(response), 200)
 
 
-@server.route('/comparenoauth', methods=['POST'])
-def comparenoauth():
+@server.route('/compare', methods=['POST'])
+def compare():
 
     payload = request.json
-    api_key = request.headers.get("X-Api-Key")
+    api_key_passed = request.headers.get("X-Api-Key")
 
+    invalid_auth_return = json.dumps({"status": "error",
+                           "payload": {
+                               "message": "invalid authentication"}
+                           }
+                        )
+
+    # Check authentication keys
+    if api_key_passed is None:
+
+    	return invalid_auth_return
+
+    elif API_KEY != api_key_passed:
+
+    	return invalid_auth_return
+
+    # Check payload is well constructed
     if payload == None:
         return json.dumps({"status": "error",
                            "payload": {
@@ -48,6 +65,13 @@ def comparenoauth():
         return json.dumps({"status": "error",
                            "payload": {
                                "message": "exemplar not in payload"
+                               }
+                           }
+                        )
+    elif type(exemplar) != list:
+        return json.dumps({"status": "error",
+                           "payload": {
+                               "message": "exemplar not of type array"
                                }
                            }
                         )

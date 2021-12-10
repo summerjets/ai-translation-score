@@ -21,11 +21,12 @@ Expected Success Output
 }
 ```
 
-### /comparenoauth and /compare endpoints
+### /compare endpoint
 
 * POST request
 
-Expected Input
+Expected Input Payload
+Note: the header should contain X-Api-Key, configured in Moodle
 
 ```
 {
@@ -54,6 +55,17 @@ Expected Failed Output
   "payload": {
                "message": "error running AI module."
              }
+}
+```
+
+Expected Unauthorized Request
+
+```
+{
+	"status": "error",
+	"payload": {
+                "message": "invalid authentication"
+               }
 }
 ```
 
@@ -95,6 +107,7 @@ The startup script handles all setup, installation and booting.
 
 ```
 chmod u+x run_docker.sh
+export TRANSLATION_API_KEY=yourKey
 sudo ./run_docker.sh
 ```
 
