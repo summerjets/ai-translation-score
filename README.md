@@ -100,7 +100,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 The service uses an authentication key, contained in a hidden file, .env
 
 ```
-TRANSLATION_API_KEY=yourKey
+TRANSLATION_API_KEY=yourApiKey
 ```
 
 ### 3. Running the Container
