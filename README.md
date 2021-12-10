@@ -97,6 +97,12 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
+The service uses an authentication key, contained in a hidden file, .env
+
+```
+TRANSLATION_API_KEY=yourKey
+```
+
 ### 3. Running the Container
 
 The startup script handles all setup, installation and booting.
@@ -107,7 +113,6 @@ The startup script handles all setup, installation and booting.
 
 ```
 chmod u+x run_docker.sh
-export TRANSLATION_API_KEY=yourKey
 sudo ./run_docker.sh
 ```
 
