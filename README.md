@@ -79,6 +79,7 @@ Invalid input payloads are handled gracefully, with payload messages such as "pa
 ### 1. Clone this Repository
 
 ```
+## might also need to install git if you haven't already: sudo yum install git -y
 git clone https://this-repo
 ```
 
@@ -98,9 +99,14 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
 The service uses an authentication key, contained in a hidden file, .env
+Update the sample file, env_example and move it to .env
 
 ```
 TRANSLATION_API_KEY=yourApiKey
+```
+
+```
+mv env_example .env
 ```
 
 ### 3. Running the Container
@@ -121,6 +127,15 @@ Upon successful completion of the script, the easiest way to check the applicati
 ```
 $ curl localhost:8000/health
 {"status":"healthy"}
+```
+
+
+### 4. Calling from elsewhere
+
+Update the request URL in the curl request below - the sample shows the syntax for pointing at an EC2 instance.
+
+```
+curl --location --request POST 'ec2-100-27-24-27.compute-1.amazonaws.com:8000/compare' -H 'Content-Type: application/json' --data-raw '{"submission": "Caecelius is in the house match", "exemplar": "Caecelius is in his garden"}' --header 'x-api-key: yourApiKey'
 ```
 
 
