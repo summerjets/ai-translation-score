@@ -135,7 +135,16 @@ $ curl localhost:8000/health
 Update the request URL in the curl request below - the sample shows the syntax for pointing at an EC2 instance.
 
 ```
-curl --location --request POST 'ec2-100-27-24-27.compute-1.amazonaws.com:8000/compare' -H 'Content-Type: application/json' --data-raw '{"submission": "Caecelius is in the house match", "exemplar": "Caecelius is in his garden"}' --header 'x-api-key: yourApiKey'
+curl --location --request POST 'ec2-100-27-24-27.compute-1.amazonaws.com:8000/compare' 
+-H 'Content-Type: application/json' 
+--data-raw '{"submission": "Caecelius is in the house match", "exemplar": "Caecelius is in his garden"}' 
+--header 'x-api-key: yourApiKey'
+```
+
+which should return a success payload:
+
+```
+{"status": "success", "payload": {"comparison_score": 0.5501229176408523, "accept_solution": false}}
 ```
 
 
