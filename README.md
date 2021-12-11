@@ -98,6 +98,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
+### 3. Running the Container
+
 The service uses an authentication key, contained in a hidden file, .env
 Update the sample file, env_example and move it to .env
 
@@ -108,8 +110,6 @@ TRANSLATION_API_KEY=yourApiKey
 ```
 mv env_example .env
 ```
-
-### 3. Running the Container
 
 The startup script handles all setup, installation and booting.
 1. Installs all package dependencies in the container
